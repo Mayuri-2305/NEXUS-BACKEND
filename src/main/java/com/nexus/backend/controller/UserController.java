@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nexus.backend.dto.LoginRequest;
+import com.nexus.backend.dto.UserResponse;
 import com.nexus.backend.entity.User;
 import com.nexus.backend.service.UserService;
 
@@ -24,4 +26,18 @@ public class UserController {
     public User registerUser(@RequestBody User user) {
         return userService.registerUser(user);
     }
+    
+    @PostMapping("/login")
+    public UserResponse loginUser(@RequestBody LoginRequest request) {
+       User user = userService.loginUser(
+            request.getEmail(),
+            request.getPassword()
+        );
+        return new UserResponse(
+            user.getId(),
+            user.getName(),
+            user.getEmail()
+        );
+    }
+
 }
