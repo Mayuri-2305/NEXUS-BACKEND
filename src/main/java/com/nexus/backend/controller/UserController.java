@@ -13,7 +13,10 @@ import com.nexus.backend.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://nexus-frontend-eight-sandy.vercel.app"
+})
 public class UserController {
 
     private final UserService userService;
