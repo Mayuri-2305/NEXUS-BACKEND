@@ -16,7 +16,10 @@ import com.nexus.backend.service.FinancialPlanService;
 
 @RestController
 @RequestMapping("/api/financial-plans")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://nexus-frontend-eight-sandy.vercel.app"
+})
 public class FinancialPlanController {
 
     private final FinancialPlanService financialPlanService;
